@@ -1,0 +1,3 @@
+[submodule "src/lib/root"]
+	path = src/lib/root
+	url = https://github.com/byzatic/BASH-root-library.git

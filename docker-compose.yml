@@ -1,0 +1,21 @@
+version: '3.5'
+services:
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tar-incremental-restore
+    container_name: tar-incremental-restore-test-container
+    # (OPTIONAL ARG) restore from date
+    environment:
+      RESTORE_FROM: "2024-02-30"
+      # RESTORE_PERIOD: '1y:3m:3m:1w:2w:2d:2d:2d'
+      #RESTORE_PERIOD: '2w:1d:2w'
+      RESTORE_PERIOD: 'all'
+      #STRIP_COMPONENTS: "1"
+    restart: "no"
+    volumes:
+      # restore source catalog
+      - ./__test_dir/source:/backup_source
+      # restore output catalog
+      - ./__test_dir/output:/backup_output
